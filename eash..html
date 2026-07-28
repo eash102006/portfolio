@@ -1,0 +1,756 @@
+
+Eash · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eashwar Raj | Portfolio</title>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+ 
+<style>
+ 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+scroll-behavior:smooth;
+}
+ 
+body{
+background:linear-gradient(160deg,#0a0f1f 0%,#0f1b33 45%,#12243f 100%);
+color:#e8edf5;
+overflow-x:hidden;
+line-height:1.6;
+}
+ 
+::selection{
+background:#00b8d4;
+color:#0a0f1f;
+}
+ 
+header{
+position:fixed;
+width:100%;
+padding:18px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(10,15,31,.65);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:999;
+}
+ 
+.logo{
+font-size:24px;
+font-weight:700;
+letter-spacing:.5px;
+color:#e8edf5;
+}
+ 
+.logo span{
+color:#00c2d6;
+}
+ 
+nav a{
+position:relative;
+color:#c7d2e0;
+text-decoration:none;
+margin:0 18px;
+font-size:15px;
+font-weight:400;
+transition:color .3s;
+padding-bottom:4px;
+}
+ 
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0;
+height:2px;
+background:#00c2d6;
+transition:width .3s;
+}
+ 
+nav a:hover{
+color:#ffffff;
+}
+ 
+nav a:hover::after{
+width:100%;
+}
+ 
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:60px;
+}
+ 
+.hero-content{
+display:flex;
+gap:70px;
+align-items:center;
+flex-wrap:wrap;
+}
+ 
+/* ---- Tech animation box (replaces broken profile image) ---- */
+.tech-box{
+width:350px;
+height:450px;
+border-radius:20px;
+background:#ffffff;
+box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 0 1px rgba(0,194,214,.15),0 0 45px rgba(0,194,214,.25);
+animation:float 4s ease-in-out infinite;
+position:relative;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+ 
+@keyframes float{
+50%{transform:translateY(-12px);}
+}
+ 
+/* faint circuit grid backdrop */
+.tech-box::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(#e6fbff 1px,transparent 1px),
+linear-gradient(90deg,#e6fbff 1px,transparent 1px);
+background-size:26px 26px;
+opacity:.6;
+}
+ 
+/* rotating orbit ring of tech icons */
+.orbit{
+position:relative;
+width:220px;
+height:220px;
+z-index:2;
+}
+ 
+.orbit-ring{
+position:absolute;
+inset:0;
+border:2px dashed #00c2d6;
+border-radius:50%;
+animation:spin 12s linear infinite;
+opacity:.5;
+}
+ 
+.orbit-ring.inner{
+inset:35px;
+animation-duration:8s;
+animation-direction:reverse;
+border-style:solid;
+opacity:.3;
+}
+ 
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+ 
+.core{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:70px;
+height:70px;
+border-radius:16px;
+background:linear-gradient(135deg,#00c2d6,#0f172a);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+box-shadow:0 0 18px rgba(0,194,214,.6);
+animation:pulse 2.4s ease-in-out infinite;
+}
+ 
+@keyframes pulse{
+0%,100%{box-shadow:0 0 12px rgba(0,194,214,.5);}
+50%{box-shadow:0 0 26px rgba(0,194,214,.7);}
+}
+ 
+.chip{
+position:absolute;
+width:42px;
+height:42px;
+border-radius:10px;
+background:#0f172a;
+color:#00e5ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:600;
+box-shadow:0 0 12px rgba(0,229,255,.6);
+animation:spin 12s linear infinite;
+transform-origin:110px 110px;
+}
+ 
+.chip span{
+display:inline-block;
+animation:counter-spin 12s linear infinite;
+}
+ 
+@keyframes counter-spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(-360deg);}
+}
+ 
+.chip.c1{ top:0; left:89px; }
+.chip.c2{ top:55px; left:190px; transform-origin:-35px 55px; animation-delay:-3s; }
+.chip.c3{ top:178px; left:190px; transform-origin:-35px -68px; animation-delay:-6s; }
+.chip.c4{ top:178px; left:-10px; transform-origin:110px -68px; animation-delay:-9s; }
+ 
+/* terminal strip under the orbit */
+.terminal{
+z-index:2;
+margin-top:26px;
+background:#0f172a;
+color:#00e5ff;
+font-family:'Courier New',monospace;
+font-size:14px;
+padding:10px 16px;
+border-radius:8px;
+min-width:230px;
+text-align:left;
+box-shadow:0 4px 15px rgba(0,0,0,.25);
+}
+ 
+.terminal .cursor{
+display:inline-block;
+width:8px;
+height:14px;
+background:#00e5ff;
+margin-left:4px;
+vertical-align:middle;
+animation:blink 1s steps(1) infinite;
+}
+ 
+@keyframes blink{
+50%{opacity:0;}
+}
+ 
+.hero-text h1{
+font-size:56px;
+font-weight:700;
+letter-spacing:-.5px;
+}
+ 
+.hero-text span{
+color:#00c2d6;
+}
+ 
+.hero-text p{
+margin:14px 0;
+font-size:18px;
+color:#aab6c9;
+font-weight:300;
+}
+ 
+.btn{
+padding:15px 38px;
+background:#00c2d6;
+color:#0a0f1f;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+margin-top:24px;
+transition:transform .25s,box-shadow .25s;
+box-shadow:0 8px 25px rgba(0,194,214,.3);
+}
+ 
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(0,194,214,.45);
+}
+ 
+section{
+padding:90px 100px;
+max-width:1200px;
+margin:0 auto;
+}
+ 
+.title{
+text-align:center;
+font-size:36px;
+font-weight:600;
+margin-bottom:12px;
+color:#f2f5fa;
+letter-spacing:-.3px;
+}
+ 
+.title::after{
+content:"";
+display:block;
+width:56px;
+height:3px;
+background:#00c2d6;
+margin:16px auto 44px;
+border-radius:3px;
+}
+ 
+.about{
+display:flex;
+gap:60px;
+align-items:center;
+flex-wrap:wrap;
+}
+ 
+.about img{
+width:280px;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,.4),0 0 0 1px rgba(0,194,214,.2);
+}
+ 
+.about > div p{
+color:#c7d2e0;
+font-size:16px;
+font-weight:300;
+line-height:1.8;
+}
+ 
+.about > div b{
+color:#f2f5fa;
+font-weight:600;
+}
+ 
+.card-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+ 
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:28px;
+border-radius:16px;
+transition:.35s ease;
+}
+ 
+.card h3{
+font-size:18px;
+font-weight:600;
+margin-bottom:8px;
+color:#f2f5fa;
+}
+ 
+.card p{
+color:#aab6c9;
+font-size:14px;
+font-weight:300;
+}
+ 
+.card:hover{
+transform:translateY(-6px);
+border-color:rgba(0,194,214,.4);
+box-shadow:0 12px 30px rgba(0,0,0,.3),0 0 20px rgba(0,194,214,.15);
+}
+ 
+.skill{
+margin:24px 0;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+font-size:15px;
+font-weight:500;
+color:#e8edf5;
+}
+ 
+.bar{
+height:8px;
+background:rgba(255,255,255,.08);
+border-radius:20px;
+overflow:hidden;
+margin-top:8px;
+}
+ 
+.fill{
+height:100%;
+background:linear-gradient(to right,#0891a8,#00c2d6);
+border-radius:20px;
+}
+ 
+.contact{
+text-align:center;
+max-width:500px;
+margin:0 auto;
+}
+ 
+input,textarea{
+width:100%;
+padding:15px 18px;
+margin:8px 0;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.04);
+color:#e8edf5;
+border-radius:10px;
+font-size:15px;
+font-family:Poppins,sans-serif;
+resize:none;
+transition:border-color .3s;
+}
+ 
+input::placeholder,textarea::placeholder{
+color:#6f8199;
+}
+ 
+input:focus,textarea:focus{
+outline:none;
+border-color:#00c2d6;
+}
+ 
+button{
+padding:15px 44px;
+margin-top:8px;
+background:#00c2d6;
+color:#0a0f1f;
+border:none;
+border-radius:30px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:transform .25s,box-shadow .25s;
+box-shadow:0 8px 25px rgba(0,194,214,.3);
+}
+ 
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(0,194,214,.45);
+}
+ 
+footer{
+padding:34px;
+text-align:center;
+background:#080b16;
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:60px;
+color:#6f8199;
+font-size:14px;
+}
+ 
+.quotes-section{
+padding:80px 100px;
+max-width:1200px;
+margin:0 auto;
+}
+ 
+.quote-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+}
+ 
+.quote-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-left:3px solid #00c2d6;
+border-radius:12px;
+padding:26px 28px;
+transition:.3s;
+}
+ 
+.quote-card:hover{
+transform:translateY(-4px);
+border-color:rgba(0,194,214,.4);
+border-left-color:#00c2d6;
+}
+ 
+.quote-card p{
+font-size:16px;
+font-style:italic;
+color:#dbe3ee;
+line-height:1.6;
+}
+ 
+.quote-card span{
+display:block;
+margin-top:14px;
+font-size:12px;
+font-style:normal;
+letter-spacing:.5px;
+text-transform:uppercase;
+color:#6f8199;
+}
+ 
+</style>
+</head>
+ 
+<body>
+ 
+<header>
+ 
+<div class="logo">Eashwar<span> Raj</span></div>
+ 
+<nav>
+ 
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#achievements">Achievements</a>
+<a href="#contact">Contact</a>
+ 
+</nav>
+ 
+</header>
+ 
+<section class="hero" id="home">
+ 
+<div class="hero-content">
+ 
+<div class="tech-box">
+ 
+<div class="orbit">
+<div class="orbit-ring"></div>
+<div class="orbit-ring inner"></div>
+<div class="core">💻</div>
+<div class="chip c1"><span>&lt;/&gt;</span></div>
+<div class="chip c2"><span>{ }</span></div>
+<div class="chip c3"><span>Py</span></div>
+<div class="chip c4"><span>JS</span></div>
+</div>
+ 
+<div class="terminal">
+&gt; building_ideas.py<span class="cursor"></span>
+</div>
+ 
+</div>
+ 
+<div class="hero-text">
+ 
+<h1>Hi I'm <span>Eashwar Raj</span></h1>
+ 
+<p>B.Tech Information Technology Student</p>
+ 
+<p>Python Developer | Java Programmer | Web Developer</p>
+ 
+<a class="btn" href="#about">Explore</a>
+ 
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<section id="about">
+ 
+<h2 class="title">About Me</h2>
+ 
+<div class="about">
+ 
+<img src="eash.1jpg.jpeg">
+<img src="eash2.jpg.jpeg">
+<div>
+ 
+<p>
+ 
+I'm <b>Eashwar Raj</b>, currently pursuing <b>B.Tech Information Technology</b> at <b>Panimalar Engineering College</b>.
+ 
+I enjoy developing websites, solving problems through technology, and learning new programming skills.
+ 
+I love traveling, driving cars, and exploring new places.
+ 
+</p>
+ 
+<br>
+ 
+<p>
+ 
+I have developed a Travel Booking Website for Car, Train, and Flight booking along with several web development projects.
+ 
+</p>
+ 
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<section id="skills">
+ 
+<h2 class="title">Skills</h2>
+ 
+<div class="skill">
+ 
+Python
+ 
+<div class="bar"><div class="fill" style="width:95%"></div></div>
+ 
+</div>
+ 
+<div class="skill">
+ 
+Java
+ 
+<div class="bar"><div class="fill" style="width:90%"></div></div>
+ 
+</div>
+ 
+<div class="skill">
+ 
+HTML/CSS
+ 
+<div class="bar"><div class="fill" style="width:98%"></div></div>
+ 
+</div>
+ 
+<div class="skill">
+ 
+JavaScript
+ 
+<div class="bar"><div class="fill" style="width:85%"></div></div>
+ 
+</div>
+ 
+</section>
+ 
+<section id="projects">
+ 
+<h2 class="title">Projects</h2>
+ 
+<div class="card-container">
+ 
+<div class="card">
+<h3>Travel Booking Website</h3>
+<p>Car, Train and Flight Booking System.</p>
+</div>
+ 
+<div class="card">
+<h3>E-Commerce Website</h3>
+<p>Responsive Shopping Website.</p>
+</div>
+ 
+<div class="card">
+<h3>Calculator</h3>
+<p>Modern Calculator using HTML CSS JS.</p>
+</div>
+ 
+<div class="card">
+<h3>To-Do App</h3>
+<p>Task Management Web Application.</p>
+</div>
+ 
+<div class="card">
+<h3>AI Startup Website</h3>
+<p>Problem Solving Platform.</p>
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<section id="achievements">
+ 
+<h2 class="title">Achievements</h2>
+ 
+<div class="card-container">
+ 
+<div class="card">
+🏆 IEEE Paper Published
+</div>
+ 
+<div class="card">
+🎓 NPTEL Certified
+</div>
+ 
+<div class="card">
+💼 Web Development Internship
+</div>
+ 
+<div class="card">
+🩺 MEDIX Course Completed
+</div>
+ 
+<div class="card">
+🚀 Multiple Projects Developed
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<section class="quotes-section">
+ 
+<h2 class="title">Words I Build By</h2>
+ 
+<div class="quote-grid">
+ 
+<div class="quote-card">
+<p>"Dream big, code smart, travel far."</p>
+<span>On ambition</span>
+</div>
+ 
+<div class="quote-card">
+<p>"Success is built one project at a time."</p>
+<span>On progress</span>
+</div>
+ 
+<div class="quote-card">
+<p>"Travel inspires creativity. Coding brings ideas to life."</p>
+<span>On inspiration</span>
+</div>
+ 
+<div class="quote-card">
+<p>"Simplicity is the soul of good code."</p>
+<span>On craft</span>
+</div>
+ 
+<div class="quote-card">
+<p>"Every bug fixed is a lesson earned."</p>
+<span>On growth</span>
+</div>
+ 
+<div class="quote-card">
+<p>"Stay curious. The best developers never stop learning."</p>
+<span>On mindset</span>
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<section id="contact">
+ 
+<h2 class="title">Contact Me</h2>
+ 
+<div class="contact">
+ 
+<input placeholder="Your Name"><br>
+ 
+<input placeholder="Email"><br>
+ 
+<textarea rows="5" placeholder="Message"></textarea><br>
+ 
+<button>Send</button>
+ 
+</div>
+ 
+</section>
+ 
+<footer>
+ 
+© 2026 Eashwar Raj | Portfolio
+ 
+</footer>
+ 
+</body>
+</html>
